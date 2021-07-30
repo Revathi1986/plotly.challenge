@@ -56,3 +56,79 @@ function Plots(sampleId){
 
     }
     Plotly.newPlot("bubble", dataBubble,layoutBubble);
+ // Creating trace for gauge chart
+ var traceGauge = [
+    {
+      type: "scatter",
+      x: [0],
+      y: [0],
+      marker: { 
+          size: 12, color: "850000" 
+        },
+      showlegend: false,
+      name: "Washes",
+      text: wfreq,
+      hoverinfo: "text+name"
+    },
+    {
+      values: [1, 1, 1, 1, 1, 1, 1, 1 ,1, 9],
+      rotation: 90,
+      text: ["8-9", "7-8", "6-7", "5-6", "4-5", "3-4", "2-3", "1-2", "0-1", ""],
+      textinfo: "text",
+      textposition: "inside",
+      marker: {
+        colors: [
+          "rgba(0, 105, 11, .5)",
+          "rgba(10, 120, 22, .5)",
+          "rgba(14, 127, 0, .5)",
+          "rgba(110, 154, 22, .5)",
+          "rgba(170, 202, 42, .5)",
+          "rgba(202, 209, 95, .5)",
+          "rgba(210, 206, 145, .5)",
+          "rgba(232, 226, 202, .5)",
+          "rgba(240, 230, 215, .5)",
+          "rgba(255, 255, 255, 0)"
+        ]
+      },
+      labels: ["8-9", "7-8", "6-7", "5-6", "4-5", "3-4", "2-3", "1-2", "0-1", ""],
+      hoverinfo: "label",
+      hole: 0.5,
+      type: "pie",
+      showlegend: false
+    }
+  ];
+
+// Creating layout for gauge chart
+var layoutGauge = {
+shapes: [
+    {
+    type: "path",
+    path: path,
+    fillcolor: "850000",
+    line: {
+        color: "850000"
+    }
+    }
+],
+title: "<b>Belly Button Washing Frequency</b> <br>Scrubs per Week",
+height: 700,
+width: 700,
+xaxis: {
+    zeroline: false,
+    showticklabels: false,
+    showgrid: false,
+    range: [-1, 1]
+},
+yaxis: {
+    zeroline: false,
+    showticklabels: false,
+    showgrid: false,
+    range: [-1, 1]
+}
+};
+
+// Plot gauge chart
+Plotly.newPlot('gauge', traceGauge, layoutGauge); 
+});
+
+}
