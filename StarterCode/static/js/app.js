@@ -35,7 +35,24 @@ function Plots(sampleId){
     Plotly.newPlot('bar',dataBar,layout Bar);
     };
 
+    var traceBubble ={
+        x : otu_ids,
+        y : Sample_values,
+        mode: "markers",
+        markeer:{
+            size : Sample_values,
+            color: otu_ids
+        },
+        text : otu_labels
+    };
+    var dataBubble =[traceBubble];
 
+    var layoutBubble ={
+        xaxis : {
+            title : "OTU IDS"
+        }
+        height : 700,
+        width : 1200
 
-}
-Plots("940")
+    }
+    Plotly.newPlot("bubble", dataBubble,layoutBubble);
